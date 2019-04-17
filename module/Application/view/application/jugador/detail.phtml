@@ -1,0 +1,52 @@
+<h1>Listado de Jugadores</h1>
+
+<hr/>
+<a class="btn btn-success" href="<?php echo $this->basePath("/jugador/add/".$this->equipo_id); ?>">Crear Jugador</a>
+
+<hr/>
+
+
+
+<?php 
+$flash=$this->flashMessenger()
+		->setMessageOpenFormat("<div%s>")
+		->setMessageSeparatorString("")
+		->setMessageCloseString("</div>");
+
+echo $flash->render("add",array("alert","alert-success"));
+echo $flash->render("add_false",array("alert","alert-danger"));
+?>
+
+<table class="table table-hover table-striped">
+	<tr>
+		<th>Foto</th>
+		<th>Nombre</th>
+		<th>Número</th>
+		<th>Estatus</th>
+		<th>Acciones</th>
+	</tr>
+	<?php foreach ($this->jugadores as $jugador){ ?>
+	<tr>
+		<td><img src="<?php echo $this->basePath("img/players/".$jugador->jugador_picture) ?>" class="img-player"></td>
+		<td><?php echo $jugador->jugador_name . "  " . $jugador->jugador_lastname_pat . " " . $jugador->jugador_lastname_mat; ?></td>
+		<td><?php echo $jugador->jugador_number; ?></td>
+		<td>
+			<?php if($jugador->jugador_status == 1){ echo "Activo" ; } ;?> 
+			<?php if($jugador->jugador_status == 0){ echo "Suspendido" ;} ;?>
+		</td>
+		
+		<!--td><a class="btn btn-warning" href="<?php echo $this->basePath("/usuario/edit/".$usuario->id); ?>">Editar</a></td-->
+		<td><a class="btn btn-danger" href="<?php echo $this->basePath("/jugador/delete/".$jugador->jugador_id); ?>">Eliminar</a></td>
+	</tr>
+	<?php } ?>
+</table>
+
+<?php 
+ echo $this->paginationControl(
+		 $this->jugadores,
+		 "sliding",
+		 "partial/paginator.phtml",
+		 array(
+			 "route" => "jugadores"
+		 ));
+?>

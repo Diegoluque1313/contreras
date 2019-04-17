@@ -1,0 +1,60 @@
+    <div class="container">
+
+      <div class="row row-offcanvas row-offcanvas-right">
+
+        <div class="col-xs-12 col-sm-12">
+          <div class="jumbotron">
+            <h1>Bienvenido
+                <?php if($this->identity()){ ?>
+                    <?php  echo $this->identity()->name." ".$this->identity()->surname; ?>
+                <?php } ?> !!
+            </h1>
+            <p>Este es un proyecto de control y administracion de la liga sabatina de La Magdalena Contreras</p>
+          </div>
+          <div class="row">
+            <div class="col-xs-6 col-lg-4">
+              <center>
+                    <h2>Equipos</h2>
+                    <img src="<?php echo $this->basePath('img/team.png') ?>" height="50%" width="50%"> 
+                    <p class="botton-link"><a class="btn btn-primary" href="<?php echo $this->url('equipo') ?>" role="button">Ver mas»</a></p>
+              </center>
+            </div><!--/.col-xs-6.col-lg-4-->
+            <div class="col-xs-6 col-lg-4">
+              <center>
+                    <h2>Partidos</h2>
+                    <img src="<?php echo $this->basePath('img/match.png') ?>" height="50%" width="50%"> 
+                    <p class="botton-link"><a class="btn btn-primary" href="<?php echo $this->url('partido') ?>" role="button">Ver mas»</a></p>
+              </center>
+            </div><!--/.col-xs-6.col-lg-4-->
+            <div class="col-xs-6 col-lg-4">
+              <center>
+                    <h2>Tabla general</h2>
+                    <img src="<?php echo $this->basePath('img/table.svg') ?>" height="50%" width="50%"> 
+                    <p class="botton-link"><a class="btn btn-primary" href="<?php echo $this->url('equipo') ?>" role="button">Ver mas»</a></p>
+              </center>
+            </div><!--/.col-xs-6.col-lg-4-->
+            <div class="col-xs-6 col-lg-4">
+              <center>
+                    <h2>Sanciones</h2>
+                    <img src="<?php echo $this->basePath('img/sanction2.png') ?>" height="50%" width="50%"> 
+                    <p class="botton-link"><a class="btn btn-primary" href="<?php echo $this->url('equipo') ?>" role="button">Ver mas»</a></p>
+              </center>
+            </div><!--/.col-xs-6.col-lg-4-->
+            <div class="col-xs-6 col-lg-4">
+              <center>
+                    <h2>Goleadores</h2>
+                    <img src="<?php echo $this->basePath('img/goals.svg') ?>" height="50%" width="50%"> 
+                    <p class="botton-link"><a class="btn btn-primary" href="<?php echo $this->url('equipo') ?>" role="button">Ver mas»</a></p>
+              </center>
+            </div><!--/.col-xs-6.col-lg-4-->
+            <div class="col-xs-6 col-lg-4">
+              <center>
+                    <h2>Juntas</h2>
+                    <img src="<?php echo $this->basePath('img/meeting.png') ?>" height="50%" width="50%"> 
+                    <p class="botton-link"><a class="btn btn-primary" href="<?php echo $this->url('equipo') ?>" role="button">Ver mas»</a></p>
+              </center>
+            </div><!--/.col-xs-6.col-lg-4-->
+          </div><!--/row-->
+        </div><!--/.col-xs-12.col-sm-9-->
+
+    </div><!--/.container-->

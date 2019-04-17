@@ -1,0 +1,19 @@
+<h1><?php echo $this->lowercase("  ".$this->title); ?></h1>
+<?php 
+$form = $this->form;
+$form->prepare();
+
+$form->setAttributes(array(
+	//"action" => $this->basePath()."/get-form",
+	"action" => "",
+	"method" => "post"
+));
+
+$formLabel = $this->plugin("formLabel");
+
+echo $this->form()->openTag($form);
+
+echo $this->formCollection($form);
+
+echo $this->form()->closeTag();
+?>

@@ -1,0 +1,17 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script>
+	$(document).ready(function () {
+		$(".mostrar").click(function () {
+			$.ajax({
+				async: true,
+				type: "POST",
+				url: "<?php echo $this->basePath("application/index/load"); ?>",
+				success: function (response) {
+					$("#contenido").html(response);
+				}
+			});
+		});
+	});
+</script>
+<button class="mostrar btn btn-success">MOSTRAR</button>
+<div id="contenido"></div>

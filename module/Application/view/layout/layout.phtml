@@ -1,0 +1,86 @@
+<?php echo $this->doctype(); ?>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <?php echo $this->headTitle('ZF2 '. $this->translate('Skeleton Application'))->setSeparator(' - ')->setAutoEscape(false) ?>
+
+        <?php echo $this->headMeta()
+            ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+            ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+        ?>
+
+        <!-- Le styles -->
+        <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
+                        ->prependStylesheet($this->basePath('css/style.css'))
+                        ->prependStylesheet($this->basePath('css/bootstrap-theme.min.css'))
+                        ->prependStylesheet($this->basePath('css/bootstrap.min.css')) ?>
+
+        <!-- Scripts -->
+        <?php echo $this->headScript()
+            ->prependFile($this->basePath('js/bootstrap.min.js'))
+            ->prependFile($this->basePath('js/jquery.min.js'))
+            ->prependFile($this->basePath('js/respond.min.js'), 'text/javascript', array('conditional' => 'lt IE 9',))
+            ->prependFile($this->basePath('js/html5shiv.min.js'),   'text/javascript', array('conditional' => 'lt IE 9',))
+        ; ?>
+
+    </head>
+    <body>
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="<?php echo $this->url('home') ?>"><img width="100" src="<?php echo $this->basePath('img/mc-r.png') ?>" alt="Zend Framework 2"/>&nbsp;<!--?php echo $this->translate('Deportivo Contreras') ?--></a>
+                </div>
+                
+                
+                <div class="collapse navbar-collapse">
+                    <?php if($this->identity()){ ?>
+                        <ul class="nav navbar-nav home">
+                            <li class="active"><a href="<?php echo $this->url('home') ?>"><?php echo $this->translate('Inicio') ?></a></li>
+                            <li class="active"><a href="<?php echo $this->url('usuario') ?>"><?php echo $this->translate('Usuarios') ?></a></li>
+                            <li class="active"><a href="<?php echo $this->url('equipo') ?>"><?php echo $this->translate('Equipos') ?></a></li>
+                            <li class="active"><a href="<?php echo $this->url('partido') ?>"><?php echo $this->translate('Partidos') ?></a></li>
+                        </ul>
+					<!--form action="<?php echo $this->basePath("application/index/lang"); ?>" method="post"
+						  class="nav navbar-nav navbar-right">
+						<select name="lang" onchange="this.form.submit();">
+							<option disabled selected>Idiomas</option>
+							<option value="es_ES">Castellano</option>
+							<option value="en_US">Inglés</option>
+						</select>
+					</form-->
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="dropdown">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cerrar la sesión <span class="caret"></span></a>
+                              <ul class="dropdown-menu">
+                                <li><a class="" href="<?php echo $this->basePath("/usuario/logout"); ?>"> 
+                                <?php  echo $this->identity()->name." ".$this->identity()->surname; ?>
+                                </a></li>
+                                <li><a class="" href="<?php echo $this->basePath("/usuario/logout"); ?>"> 
+                                <?php  echo $this->identity()->email; ?>
+                                </a></li>
+                              </ul>
+                            </li>
+                        </ul>
+                    <?php } ?>
+                    
+                </div><!--/.nav-collapse -->
+
+            </div>
+        </nav>
+        <div class="container">
+            <?php echo $this->content; ?>
+            <hr>
+            <footer>
+                <p><?php echo $this->translate('Enjoy with this course of ZF2') ?> &copy; 2005 - <?php echo date('Y') ?> by Zend Technologies Ltd. <?php echo $this->translate('All rights reserved.') ?></p>
+            </footer>
+        </div> <!-- /container -->
+        <?php echo $this->inlineScript() ?>
+    </body>
+</html>

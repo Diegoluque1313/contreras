@@ -1,0 +1,34 @@
+<h1>Identificate</h1>
+<hr/>
+<div class="col-lg-7">
+<?php
+$this->headTitle("Identificate con el login");
+$form = $this->form;
+$form->prepare();
+echo $this->form()->openTag($form);
+?>
+
+<div class="errors">
+	<?php  echo $this->flashMessenger()->render(); ?>
+</div>
+
+<div class="form_element">
+	<?php
+		$email = $form->get("email");
+		echo "Correo: ".$this->formInput($email);
+	?>
+</div>
+<br/>
+<div class="form_element">
+	<?php
+		$password = $form->get("password");
+		echo "Contraseña: ".$this->formInput($password);
+	?>
+</div>
+<br/>
+<?php
+	echo $this->formElement($form->get("submit"));
+	echo $this->form()->closeTag();
+?>
+</div>
+<div class="clearfix"></div>

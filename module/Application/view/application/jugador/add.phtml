@@ -1,0 +1,40 @@
+<h1><?php echo "Crear Jugador"; ?></h1>
+<hr/>
+
+<form class="form-inline" action="" method="POST" enctype="multipart/form-data">
+  <div class="form-group col-xs-12 hidden">
+    <label for="equipo_id">Equipo</label>
+    <input type="number" class="form-control" name="equipo_id" id="equipo_id" value="<?php echo $this->equipo_id; ?>">
+  </div>
+  <div class="form-group col-xs-12">
+    <label for="name">Nombre</label>
+    <input type="text" class="form-control" name="jugador_name" id="name">
+  </div>
+  <div class="form-group col-xs-12">
+    <label for="jugador_lastname_pat">Apellido Paterno</label>
+    <input type="text" class="form-control" name="jugador_lastname_pat" id="jugador_lastname_pat">
+  </div>
+  <div class="form-group col-xs-12">
+    <label for="jugador_lastname_mat">Apellido materno</label>
+    <input type="text" class="form-control" name="jugador_lastname_mat" id="jugador_lastname_mat">
+  </div>
+  <div class="form-group col-xs-12">
+    <label for="jugador_number">Número</label>
+    <input type="text" class="form-control" name="jugador_number" id="jugador_number">
+  </div>
+  <div class="form-group col-xs-12">
+    <label for="jugador_picture">Foto</label>
+    <input type="file" class="file-path" name="jugador_picture" id="jugador_picture">
+  </div>
+  <div class="form-group col-xs-12">
+  	<br>
+    <select name="jugador_status" class="form-control">
+          <option value="1">Activo</option>
+          <option value="0">Innactivo</option>
+    </select>
+  </div>
+  <div class="form-group col-xs-12" >
+  		<br>
+  		<button type="submit" class="btn btn-default">Submit</button>
+  </div>
+</form>

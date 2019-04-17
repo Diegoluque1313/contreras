@@ -1,0 +1,54 @@
+<h1>Listado de Partidos</h1>
+
+<hr/>
+<a class="btn btn-success" href="<?php echo $this->basePath("/jugador/add"); ?>">Crear Partido</a>
+
+<hr/>
+
+
+
+<?php 
+$flash=$this->flashMessenger()
+		->setMessageOpenFormat("<div%s>")
+		->setMessageSeparatorString("")
+		->setMessageCloseString("</div>");
+
+echo $flash->render("add",array("alert","alert-success"));
+echo $flash->render("add_false",array("alert","alert-danger"));
+?>
+
+<table class="table table-hover table-striped">
+	<tr>
+		<th>Id</th>
+		<th>Marcador</th>
+		<th>Campo</th>
+		<th>Jornada</th>
+		<th>Status</th>
+		<th>Acciones</th>
+	</tr>
+	<?php foreach ($this->partidos as $partido){ ?>
+	<tr>
+		<td><?php echo $partido->partido_id; ?></td>
+		<td><?php echo $partido->partido_marcador ; ?></td>
+		<td><?php echo $partido->partido_campo; ?></td>
+		<td><?php echo $partido->partido_jornada; ?></td>
+		<td>
+			<?php if($partido->partido_status == 1){ echo "finalizado" ; } ;?> 
+			<?php if($partido->partido_status == 0){ echo "Suspendido" ;} ;?>
+		</td>
+		
+		<!--td><a class="btn btn-warning" href="<?php echo $this->basePath("/usuario/edit/".$usuario->id); ?>">Editar</a></td-->
+		<td><a class="btn btn-danger" href="<?php echo $this->basePath("/jugador/delete/"); ?>">Eliminar</a></td>
+	</tr>
+	<?php } ?>
+</table>
+
+<?php 
+ echo $this->paginationControl(
+		 $this->partidos,
+		 "sliding",
+		 "partial/paginator.phtml",
+		 array(
+			 "route" => "partidos"
+		 ));
+?>

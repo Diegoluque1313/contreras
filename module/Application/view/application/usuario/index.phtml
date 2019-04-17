@@ -1,0 +1,45 @@
+<h1>Listado de usuarios</h1>
+<hr/>
+<a class="btn btn-success" href="<?php echo $this->basePath("/usuario/add"); ?>">Crear usuario</a>
+
+<hr/>
+<?php 
+$flash=$this->flashMessenger()
+		->setMessageOpenFormat("<div%s>")
+		->setMessageSeparatorString("")
+		->setMessageCloseString("</div>");
+
+echo $flash->render("add",array("alert","alert-success"));
+echo $flash->render("add_false",array("alert","alert-danger"));
+?>
+<table class="table table-hover table-striped">
+	<tr>
+		<th>Nombre</th>
+		<th>Apellidos</th>
+		<th>Descripción</th>
+		<th>Email</th>
+		<th>Editar</th>
+		<th>Eliminar</th>
+	</tr>
+	<?php foreach ($this->usuarios as $usuario){ ?>
+	<tr>
+		<td><?php echo $usuario->name; ?></td>
+		<td><?php echo $usuario->surname; ?></td>
+		<td><?php echo $usuario->description; ?></td>
+		<td><?php echo $usuario->email; ?></td>
+		<td><a class="btn btn-warning" href="<?php echo $this->basePath("/usuario/edit/".$usuario->id); ?>">Editar</a></td>
+		<td><a class="btn btn-danger" href="<?php echo $this->basePath("/usuario/delete/".$usuario->id); ?>">Eliminar</a></td>
+	</tr>
+	<?php } ?>
+</table>
+
+<?php 
+ echo $this->paginationControl(
+		 $this->usuarios,
+		 "sliding",
+		 "partial/paginator.phtml",
+		 array(
+			 "route" => "usuario"
+		 ));
+?>
+
