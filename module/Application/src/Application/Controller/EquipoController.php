@@ -56,7 +56,6 @@ class EquipoController extends AbstractActionController {
 
 	public function addAction() {
 
-
 		$publicPath = $_SERVER['DOCUMENT_ROOT'];
 
 		if ($this->request->isPost()) {
