@@ -56,6 +56,8 @@ class EquipoController extends AbstractActionController {
 
 	public function addAction() {
 
+		#comentario de prueba para git
+
 		$publicPath = $_SERVER['DOCUMENT_ROOT'];
 
 		if ($this->request->isPost()) {
